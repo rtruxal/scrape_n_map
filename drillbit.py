@@ -1,6 +1,7 @@
-import time
-import os
-import re
+# import time
+# import os
+# import re
+from class_decs import humanize
 import requests
 from bs4 import BeautifulSoup
 from collections import Counter
@@ -16,6 +17,7 @@ so far does 3 things:
     and should also notch the counter with key==that link.
 
 """
+@humanize
 class Drill():
 
     @staticmethod

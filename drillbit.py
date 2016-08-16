@@ -1,12 +1,6 @@
-# import time
-# import os
-# import re
-from class_decs import humanize
-import requests
 from bs4 import BeautifulSoup
-from collections import Counter
-from fake_useragent import UserAgent
 
+from utils.class_decs import humanize
 
 """
 so far does 3 things:
@@ -48,17 +42,3 @@ class Drill():
         return results
 
 
-def main():
-    first_link = 'http://www.httpbin.org'
-    ua = UserAgent()
-    heads = {'User-Agent': ua.firefox}
-    link_counter = Counter()
-    s = requests.session()
-
-    soup = Drill.soupify_link(first_link, s, headers=heads)
-    link_list = Drill.extract_links_from_soup(soup, link_counter, first_link)
-    print(link_counter)
-
-
-if __name__ == '__main__':
-    main()

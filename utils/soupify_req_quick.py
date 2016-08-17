@@ -12,7 +12,7 @@ def _soupify_link(link, req_session, parser='lxml', bs=None, headers=None):
         return bs(req.text, parser)
     return BeautifulSoup(req.text, parser)
 
-def html_to_soup(link, user_header=None):
+def html_to_soup(link, user_header=None, session=None):
     if not user_header:
         ua = UserAgent()
         heads = {'User-Agent' : ua.firefox}
@@ -24,4 +24,4 @@ def html_to_soup(link, user_header=None):
             ua = UserAgent()
             heads = {'User-Agent' : ua.firefox}
     s = requests.session()
-    return _soupify_link(link, s, headers=heads)
+    return _soupify_link(link, s, headers=heads), s

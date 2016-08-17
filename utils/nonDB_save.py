@@ -40,3 +40,7 @@ def basic_file_write(BS_Object_prettified, file_path, append=False):
 
 def title_to_filename(BS_object):
     return '{}.htm'.format(str(BS_object.title.contents).strip("']").lstrip("[u'").replace(' ', '_'))
+
+def dummy_func():
+    print('this_func_is_far_away')
+    print(__file__)

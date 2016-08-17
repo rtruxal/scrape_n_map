@@ -27,7 +27,7 @@ def basics(url, root_saving_dir=os.getcwd()):
     # print(soupy.prettify().find('\n'))
     # print(type(soupy.prettify().split('\n')))
     ## LOOK AT THIS IT IS BROKEN.
-    basic_file_write(soupy, file_pth)
+    basic_file_write(soupy.prettify(encoding='UTF-8'), file_pth)
 
 
 

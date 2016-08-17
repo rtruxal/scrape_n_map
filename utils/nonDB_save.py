@@ -1,7 +1,8 @@
 import os
-from sys import exit
+import sys
+import pickle
 
-def basic_file_write(BS_Object, file_path, append=False):
+def basic_file_write(BS_Object_prettified, file_path, append=False):
     if os.path.exists(file_path):
         if append == True:
             pyfile = open(file_path, 'ab')
@@ -10,7 +11,7 @@ def basic_file_write(BS_Object, file_path, append=False):
                 print('this will overwrite the file.')
                 ans = input('enter y to continue, n to exit')
                 if ans.lower() == 'n':
-                    exit()
+                    sys.exit()
                 elif ans.lower() == 'y':
                     break
                 else: pass
@@ -29,10 +30,10 @@ def basic_file_write(BS_Object, file_path, append=False):
         pyfile = open(file_path, 'wb')
         print('fillepath {} was created.'.format(file_path))
 
-
-    #need to encode here
-    pyfile.writelines(BS_Object.prettify())
-
+    ##########################################
+    ##This is potentially dangerous###########
+    pickle.dump(BS_Object_prettified, pyfile)#
+    ##########################################
 
     print('write appears successful. check file.')
     pyfile.close()
